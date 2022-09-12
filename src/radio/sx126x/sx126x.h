@@ -106,7 +106,8 @@
 /*!
  * Syncword for Public LoRa networks
  */
-#define LORA_MAC_PUBLIC_SYNCWORD 0x3444
+//#define LORA_MAC_PUBLIC_SYNCWORD 0x3444
+#define LORA_MAC_PUBLIC_SYNCWORD 0x242b
 
 /*!
  * The address of the register giving a 4 bytes random number
