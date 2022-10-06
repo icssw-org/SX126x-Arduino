@@ -660,7 +660,7 @@ bool RadioIsChannelFree(RadioModems_t modem, uint32_t freq, int16_t rssiThresh, 
 			break;
 		}
 	}
-	RadioSleep();
+	//RadioSleep();
 	return status;
 }
 
@@ -788,6 +788,7 @@ void RadioSetRxConfig(RadioModems_t modem, uint32_t bandwidth,
 		else
 		{
 			SX126x.PacketParams.Params.LoRa.PreambleLength = preambleLen;
+
 		}
 
 		SX126x.PacketParams.Params.LoRa.HeaderType = (RadioLoRaPacketLengthsMode_t)fixLen;
@@ -1382,12 +1383,15 @@ void RadioBgIrqProcess(void)
 
 		if ((irqRegs & IRQ_SYNCWORD_VALID) == IRQ_SYNCWORD_VALID)
 		{
-			//__NOP( );
+			//-NOPE
 		}
 
 		if ((irqRegs & IRQ_HEADER_VALID) == IRQ_HEADER_VALID)
 		{
-			//__NOP( );
+			if ((RadioEvents != NULL) && (RadioEvents->HeaderDetect != NULL))
+			{
+				RadioEvents->HeaderDetect();
+			}
 		}
 
 		if ((irqRegs & IRQ_HEADER_ERROR) == IRQ_HEADER_ERROR)

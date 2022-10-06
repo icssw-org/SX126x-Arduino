@@ -79,6 +79,15 @@ typedef struct
      * \brief Preamble detected callback prototype.
      */
 	void (*PreAmpDetect)(void);
+     /*!
+     * \brief Syncword detected callback prototype.
+     */
+	void (*SyncWordDetect)(void);
+	/*!
+
+     * \brief Header detected callback prototype.
+     */
+	void (*HeaderDetect)(void);
 	/*!
      * \brief  FHSS Change Channel callback prototype.
      *
